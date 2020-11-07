@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "883858ad-d011-4f1f-8be5-03b1dd0c41c6",
+		"_postman_id": "f83760a8-f57e-4f04-802d-0934efe93754",
 		"name": "EC021 2020/2 Aulas",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -11,7 +11,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "940eb1f3-14ae-481b-a405-94c34b279427",
+						"id": "681ec14e-c145-483f-a754-9a81e83ac791",
 						"exec": [
 							"//Convertendo a respose em JSON\r",
 							"var response = pm.response.json();\r",
@@ -60,7 +60,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "89e341f5-d3b0-44ee-8f25-3255987ddc83",
+						"id": "9b8ca688-1680-4170-8d4f-f3e01481c451",
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
@@ -105,7 +105,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "4336e818-1d79-46ee-b58e-64907f4a5c67",
+						"id": "6098e2bc-8c92-4827-b891-35fdc27e1dd4",
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
@@ -146,7 +146,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "c027d7d4-f6ff-4a9a-939a-3237fe2fd70b",
+						"id": "29f3f8bc-0168-425b-8ff3-1b52364a7332",
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",

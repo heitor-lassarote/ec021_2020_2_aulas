@@ -5,78 +5,61 @@ module.exports = {
         console.log("Executando rota POST");
         let { lote, conteudo, validade } = req.body;
 
-        let resposta = await Toddy.create(
-            {
-                lote,
-                conteudo,
-                validade
+        try {
+            const resposta = await Toddy.create({lote, conteudo, validade});
+            if (resposta) {
+                return res.json(201, resposta);
+            } else {
+                return res.json(404);
             }
-        );
-
-        return res.json(201, resposta);
+        } catch (err) {
+            return res.json(500, {error: err});
+        }
     },
-    update: (req, res) => {
+    update: async (req, res) => {
         console.log("Executando rota PATCH");
         let { id } = req.params;
         let { lote, conteudo, validade } = req.body;
 
-        let resposta = {
-            id,
-            lote,
-            conteudo,
-            validade
-        };
-
-        return res.json(200, resposta);
+        try {
+            const resposta = await Toddy.findByIdAndUpdate(id, {lote, conteudo, validade}, {new: true});
+            if (resposta) {
+                return res.json(200, resposta);
+            } else {
+                return res.json(404);
+            }
+        } catch (err) {
+            return res.json(500, {error: err});
+        }
     },
-    search: (req, res) => {
+    search: async (req, res) => {
         console.log("Executando rota GET");
         let { id } = req.query;
 
-        let resposta;
-        if (id) {
-            // Buscar por id
-            resposta = {
-                id: "1",
-                lote: "X1A",
-                conteudo: "200",
-                validade: "17/11/2020"
+        try {
+            const resposta = id ? await Toddy.findById(id) : await Toddy.find({});
+            if (resposta) {
+                return res.json(200, resposta);
+            } else {
+                return res.json(404);
             }
-        } else {
-            // Buscar todos
-            resposta = [
-                {
-                    id: "1",
-                    lote: "X1A",
-                    conteudo: "200",
-                    validade: "17/11/2020"
-                },
-                {
-                    id: "2",
-                    lote: "X1A",
-                    conteudo: "200",
-                    validade: "17/11/2020"
-                },
-                {
-                    id: "3",
-                    lote: "X1A",
-                    conteudo: "200",
-                    validade: "17/11/2020"
-                }
-            ];
+        } catch (err) {
+            return res.json(500, {error: err});
         }
-
-        return res.json(200, resposta);
     },
-    remove: (req, res) => {
+    remove: async (req, res) => {
         console.log("Executando rota DELETE");
         let { id } = req.params;
 
-        let resposta = {
-            id,
-            nExcluidos: 1
+        try {
+            const resposta = await Toddy.findByIdAndRemove(id);
+            if (resposta) {
+                return res.json(200, resposta);
+            } else {
+                return res.json(404);
+            }
+        } catch (err) {
+            return res.json(500, {error: err});
         }
-
-        return res.json(200, resposta);
     }
 }
